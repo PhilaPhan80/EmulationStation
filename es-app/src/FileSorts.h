@@ -8,6 +8,7 @@
 namespace FileSorts
 {
 	bool compareName(const FileData* file1, const FileData* file2);
+	bool compareNameIgnoreArticles(const FileData* file1, const FileData* file2);
 	bool compareRating(const FileData* file1, const FileData* file2);
 	bool compareTimesPlayed(const FileData* file1, const FileData* file2);
 	bool compareLastPlayed(const FileData* file1, const FileData* file2);
