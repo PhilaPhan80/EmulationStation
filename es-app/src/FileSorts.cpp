@@ -57,7 +57,7 @@ namespace FileSorts
 	}
 
 	//returns if file1 should come before file2, ignores articles ("the", "a") while sorting
-	bool compareName(const FileData* file1, const FileData* file2)
+	bool compareNameIgnoreArticles(const FileData* file1, const FileData* file2)
 	{
 		// we compare the actual metadata name, as collection files have the system appended which messes up the order
 		std::string name1 = Utils::String::toUpper(file1->metadata.get("sortname"));
