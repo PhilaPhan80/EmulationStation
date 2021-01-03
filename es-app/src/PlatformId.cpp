@@ -24,6 +24,7 @@ namespace PlatformIds
 		"bbcmicro",
 		"colecovision",
 		"c64", // commodore 64
+		"daphne",
 		"intellivision",
 		"macintosh",
 		"xbox",
@@ -66,7 +67,7 @@ namespace PlatformIds
 		"snes", // super nintendo entertainment system
 		"scummvm",
 		"x1",
-		"x6800",
+		"x68000",
 		"solarus",
 		"moto", // Thomson MO/TO
 		"pc88", // NEC PC-8801
