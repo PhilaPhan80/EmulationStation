@@ -8,6 +8,9 @@ namespace FileSorts
 		FileData::SortType(&compareName, true, "filename, ascending"),
 		FileData::SortType(&compareName, false, "filename, descending"),
 
+		FileData::SortType(&compareNameIgnoreArticles, true, "filename (ignore articles), ascending"),
+		FileData::SortType(&compareNameIgnoreArticles, false, "filename (ignore articles), descending"),
+
 		FileData::SortType(&compareRating, true, "rating, ascending"),
 		FileData::SortType(&compareRating, false, "rating, descending"),
 
@@ -50,6 +53,32 @@ namespace FileSorts
 		if(name2.empty()){
 			name2 = Utils::String::toUpper(file2->metadata.get("name"));
 		}
+		return name1.compare(name2) < 0;
+	}
+
+	//returns if file1 should come before file2, ignores articles ("the", "a") while sorting
+	bool compareName(const FileData* file1, const FileData* file2)
+	{
+		// we compare the actual metadata name, as collection files have the system appended which messes up the order
+		std::string name1 = Utils::String::toUpper(file1->metadata.get("sortname"));
+		std::string name2 = Utils::String::toUpper(file2->metadata.get("sortname"));
+		if(name1.empty()){
+			name1 = Utils::String::toUpper(file1->metadata.get("name"));
+		}
+		if(name2.empty()){
+			name2 = Utils::String::toUpper(file2->metadata.get("name"));
+		}
+
+
+
+		name1 = Utils::String::replace(name1, "THE ", "");
+		name1 = Utils::String::replace(name1, "A ", "");
+		name2 = Utils::String::replace(name2, "THE ", "");
+		name2 = Utils::String::replace(name2, "A ", "");
+
+
+
+
 		return name1.compare(name2) < 0;
 	}
 
