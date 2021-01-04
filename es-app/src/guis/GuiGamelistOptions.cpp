@@ -68,10 +68,37 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 		// sort list by
 		mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
+		int selectedSortType = Settings::getInstance()->getInt("SortType");
 		for(unsigned int i = 0; i < FileSorts::SortTypes.size(); i++)
 		{
 			const FileData::SortType& sort = FileSorts::SortTypes.at(i);
-			mListSort->add(sort.description, &sort, i == 0); // TODO - actually make the sort type persistent
+			
+			
+			
+			
+			//need to load the value from settings here instead of simply i == 0
+
+
+			
+			//THIS LOADS ALL OF THE SORT TYPES FROM THE ARRAY INTO A LIST AND SETS THE FIRST ONE (0) AS SELECTED SINCE IT HAS NO REAL "LOAD" FUNCTION
+			//mListSort->add(sort.description, &sort, i == 0); // TODO - actually make the sort type persistent
+			mListSort->add(sort.description, &sort, sort.id == selectedSortType); // TODO - actually make the sort type persistent
+
+						
+
+
+			//need to save this to Settings (es_settings.xml)  -->  id (int)
+			//is this even the proper place to perform a save??
+
+
+
+			//mListSort->save
+
+			//s->addSaveFunc([max_vram] { Settings::getInstance()->setInt("MaxVRAM", (int)Math::round(max_vram->getValue())); });
+
+
+
+
 		}
 
 		mMenu.addWithLabel("SORT GAMES BY", mListSort);
