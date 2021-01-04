@@ -84,7 +84,7 @@ public:
 		std::string description;
 
 		SortType(int id, ComparisonFunction* sortFunction, bool sortAscending, const std::string & sortDescription)
-			: comparisonFunction(sortFunction), ascending(sortAscending), description(sortDescription) {}
+			: id(id), comparisonFunction(sortFunction), ascending(sortAscending), description(sortDescription) {}
 	};
 
 	void sort(ComparisonFunction& comparator, bool ascending = true);
