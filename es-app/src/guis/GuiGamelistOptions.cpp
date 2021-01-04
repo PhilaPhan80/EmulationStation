@@ -82,7 +82,7 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 			
 			//THIS LOADS ALL OF THE SORT TYPES FROM THE ARRAY INTO A LIST AND SETS THE FIRST ONE (0) AS SELECTED SINCE IT HAS NO REAL "LOAD" FUNCTION
 			//mListSort->add(sort.description, &sort, i == 0); // TODO - actually make the sort type persistent
-			mListSort->add(sort.description, &sort, sort.id == selectedSortType); // TODO - actually make the sort type persistent
+			mListSort->add(Utils::String(sort.id) + ": " + sort.description + " :: " + (sort.id == selectedSortType), &sort, sort.id == selectedSortType); // TODO - actually make the sort type persistent
 
 						
 
@@ -101,7 +101,7 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 		}
 
-		mMenu.addWithLabel("SORT GAMES BY", mListSort);
+		mMenu.addWithLabel("SORT GAMES BY -- " + Utils::String(selectedSortType) + " -- " + Utils::String(FileSorts::SortTypes.size()), mListSort);
 	}
 	// show filtered menu
 	if(!Settings::getInstance()->getBool("ForceDisableFilters"))
