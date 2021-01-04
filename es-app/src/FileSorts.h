@@ -8,7 +8,7 @@
 namespace FileSorts
 {
 	
-	enum SortTypeEnum {
+	enum SortType {
 		NAME_ASC,
 		NAME_DESC,
 		NAME_IGNORE_ARTICLES_ASC,
@@ -31,7 +31,7 @@ namespace FileSorts
 		PUBLISHER_DESC,
 		SYSTEM_ASC,
 		SYSTEM_DESC
-	}
+	};
 
 	bool compareName(const FileData* file1, const FileData* file2);
 	bool compareNameIgnoreArticles(const FileData* file1, const FileData* file2);
