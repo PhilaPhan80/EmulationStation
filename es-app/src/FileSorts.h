@@ -8,7 +8,7 @@
 namespace FileSorts
 {
 	
-	enum SortType {
+	enum SortTypeEnum {
 		NAME_ASC,
 		NAME_DESC,
 		NAME_IGNORE_ARTICLES_ASC,
