@@ -165,7 +165,7 @@ GuiGamelistOptions::~GuiGamelistOptions()
 		ViewController::get()->reloadGameListView(mSystem);
 	}
 
-	Settings::getInstance()->setInt("SortType", *mListSort->getSelected()->id);
+	Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id);
 	save();
 
 }
