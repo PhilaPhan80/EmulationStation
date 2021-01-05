@@ -164,6 +164,20 @@ GuiGamelistOptions::~GuiGamelistOptions()
 		// game is selected
 		ViewController::get()->reloadGameListView(mSystem);
 	}
+
+	save();
+
+}
+
+void GuiGamelistOptions::save()
+{
+	if(!mSaveFuncs.size())
+		return;
+
+	for(auto it = mSaveFuncs.cbegin(); it != mSaveFuncs.cend(); it++)
+		(*it)();
+
+	Settings::getInstance()->saveFile();
 }
 
 void GuiGamelistOptions::openGamelistFilter()

@@ -15,7 +15,7 @@ class GuiGamelistOptions : public GuiComponent
 public:
 	GuiGamelistOptions(Window* window, SystemData* system);
 	virtual ~GuiGamelistOptions();
-
+	void save();
 	virtual bool input(InputConfig* config, Input input) override;
 	virtual std::vector<HelpPrompt> getHelpPrompts() override;
 	virtual HelpStyle getHelpStyle() override;
