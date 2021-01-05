@@ -165,8 +165,23 @@ GuiGamelistOptions::~GuiGamelistOptions()
 		ViewController::get()->reloadGameListView(mSystem);
 	}
 
+
+
+	LOG(LogInfo) << "GuiGamelistOptions : Saving SortType = " + std::to_string(mListSort->getSelected()->id);
+
+
+
 	Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id);
+
+
+	LOG(LogInfo) << "SortType saved";
+
+
 	save();
+
+
+	LOG(LogInfo) << "Save complete";
+
 
 }
 
