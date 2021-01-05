@@ -19,6 +19,7 @@ public:
 	virtual bool input(InputConfig* config, Input input) override;
 	virtual std::vector<HelpPrompt> getHelpPrompts() override;
 	virtual HelpStyle getHelpStyle() override;
+	inline void addSaveFunc(const std::function<void()>& func) { mSaveFuncs.push_back(func); };
 
 private:
 	void openGamelistFilter();
