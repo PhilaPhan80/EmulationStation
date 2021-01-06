@@ -113,7 +113,7 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 
 
-		mMenu.addWithLabel("SORT GAMES BY -- " + std::to_string(selectedSortType) + " -- " + std::to_string(FileSorts::SortTypes.size()), mListSort);
+		mMenu.addWithLabel("SORT GAMES BY -- " + std::to_string(FileSorts::SortTypes.size()), mListSort + ", " + std::to_string(selectedSortType) + ", " + std::to_string(mListSort->getSelected()->id));
 
 
 
