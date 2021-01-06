@@ -101,7 +101,20 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 		}
 
+
+
+
+
 		mMenu.addWithLabel("SORT GAMES BY -- " + std::to_string(selectedSortType) + " -- " + std::to_string(FileSorts::SortTypes.size()), mListSort);
+
+
+
+
+		addSaveFunc([selectedSortType] { Settings::getInstance()->setInt("SortType", selectedSortType->getValue()); });
+
+
+
+
 	}
 	// show filtered menu
 	if(!Settings::getInstance()->getBool("ForceDisableFilters"))
@@ -167,18 +180,18 @@ GuiGamelistOptions::~GuiGamelistOptions()
 
 
 
-	LOG(LogInfo) << "GuiGamelistOptions : Saving SortType = " + std::to_string(mListSort->getSelected()->id);
+	//LOG(LogInfo) << "GuiGamelistOptions : Saving SortType = " + std::to_string(mListSort->getSelected()->id);
 
 
 
-	Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id);
+	//Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id);
 
 
-	LOG(LogInfo) << "SortType saved";
+	//LOG(LogInfo) << "SortType saved";
 
 
 
-	LOG(LogInfo) << "SortType = " + std::to_string(Settings::getInstance()->getInt("SortType"));
+	LOG(LogInfo) << "About to save SortType = " + std::to_string(Settings::getInstance()->getInt("SortType"));
 
 
 
@@ -192,6 +205,7 @@ GuiGamelistOptions::~GuiGamelistOptions()
 
 void GuiGamelistOptions::save()
 {
+	LOG(LogInfo) << "mSaveFuncs.size(): " + std::to_string(mSaveFuncs.size());
 	if(!mSaveFuncs.size())
 	{
 	LOG(LogInfo) << "FAILED";
