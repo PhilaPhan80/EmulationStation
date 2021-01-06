@@ -177,6 +177,11 @@ GuiGamelistOptions::~GuiGamelistOptions()
 	LOG(LogInfo) << "SortType saved";
 
 
+
+	LOG(LogInfo) << "SortType = " + std::to_string(Settings::getInstance()->getInt("SortType"));
+
+
+
 	save();
 
 
@@ -188,12 +193,17 @@ GuiGamelistOptions::~GuiGamelistOptions()
 void GuiGamelistOptions::save()
 {
 	if(!mSaveFuncs.size())
+	{
+	LOG(LogInfo) << "FAILED";
 		return;
+	}
 
 	for(auto it = mSaveFuncs.cbegin(); it != mSaveFuncs.cend(); it++)
 		(*it)();
 
 	Settings::getInstance()->saveFile();
+
+	LOG(LogInfo) << "SUCCEEDED";
 }
 
 void GuiGamelistOptions::openGamelistFilter()
