@@ -104,7 +104,7 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 
 
-		mListSort->setValue((int)(Settings::getInstance()->getInt("SortType")));
+		//mListSort->setValue((int)(Settings::getInstance()->getInt("SortType")));
 
 
 
