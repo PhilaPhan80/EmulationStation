@@ -110,17 +110,23 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 		//mListSort->setValue((int)(Settings::getInstance()->getInt("SortType")));
 
 
+	LOG(LogInfo) << "addWithLabel";
 
 
 		mMenu.addWithLabel("SORT GAMES BY -- " + std::to_string(FileSorts::SortTypes.size()) + ", " + std::to_string(selectedSortType) + ", " + std::to_string(mListSort->getSelected()->id), mListSort);
 
 
+	LOG(LogInfo) << "addSaveFunc";
 
 
 		//addSaveFunc([selectedSortType] { Settings::getInstance()->setInt("SortType", mListSort->getValue()); });
-		addSaveFunc([mListSort] { Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id); });
+		addSaveFunc([mListSort] { 
+			LOG(LogInfo) << "addSaveFunc INNER 1";
+			Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id); 
+			LOG(LogInfo) << "addSaveFunc INNER 2";
+			});
 
-
+	LOG(LogInfo) << "addSaveFunc complete";
 
 
 	}
