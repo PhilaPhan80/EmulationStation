@@ -67,8 +67,8 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 		mMenu.addRow(row);
 
 		// sort list by
-		//mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
-		auto mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
+		mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
+		//auto mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
 		
 
 
@@ -122,7 +122,7 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 		//addSaveFunc([selectedSortType] { Settings::getInstance()->setInt("SortType", mListSort->getValue()); });
 		addSaveFunc([mListSort] { 
 			LOG(LogInfo) << "addSaveFunc INNER 1";
-			Settings::getInstance()->setInt("SortType", *mListSort->getSelected()->id); 
+			Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id); 
 			LOG(LogInfo) << "addSaveFunc INNER 2";
 			});
 
