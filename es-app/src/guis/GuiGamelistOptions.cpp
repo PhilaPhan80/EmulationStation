@@ -67,8 +67,8 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 		mMenu.addRow(row);
 
 		// sort list by
-		mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
-		//auto mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
+		//mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
+		auto mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
 		
 
 
