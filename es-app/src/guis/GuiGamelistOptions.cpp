@@ -122,7 +122,7 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 		//addSaveFunc([selectedSortType] { Settings::getInstance()->setInt("SortType", mListSort->getValue()); });
 		addSaveFunc([mListSort] { 
 			LOG(LogInfo) << "addSaveFunc INNER 1";
-			Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id); 
+			Settings::getInstance()->setInt("SortType", *mListSort->getSelected()->id); 
 			LOG(LogInfo) << "addSaveFunc INNER 2";
 			});
 
