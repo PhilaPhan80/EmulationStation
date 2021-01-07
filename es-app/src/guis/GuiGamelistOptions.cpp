@@ -86,9 +86,8 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 			
 			//THIS LOADS ALL OF THE SORT TYPES FROM THE ARRAY INTO A LIST AND SETS THE FIRST ONE (0) AS SELECTED SINCE IT HAS NO REAL "LOAD" FUNCTION
 			//mListSort->add(sort.description, &sort, i == 0); // TODO - actually make the sort type persistent
-			//mListSort->add(std::to_string(sort.id) + ": " + sort.description + " :: " + std::to_string(sort.id == selectedSortType), &sort, sort.id == selectedSortType); // TODO - actually make the sort type persistent
-			mListSort->add(std::to_string(sort.id) + ": " + sort.description + " :: " + std::to_string(sort.id == selectedSortType), &sort, false); // TODO - actually make the sort type persistent
-
+			mListSort->add(std::to_string(sort.id) + ": " + sort.description + " :: " + std::to_string(sort.id == selectedSortType), &sort, sort.id == selectedSortType); // TODO - actually make the sort type persistent
+			
 						
 
 
@@ -108,7 +107,7 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 
 
-		//mListSort->setValue((int)(Settings::getInstance()->getInt("SortType")));
+		mListSort->setValue((int)(Settings::getInstance()->getInt("SortType")));
 
 
 
