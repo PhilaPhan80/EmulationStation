@@ -67,8 +67,8 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 		mMenu.addRow(row);
 
 		// sort list by
-		mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
-		//auto mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
+		//mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
+		auto mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
 		
 
 
@@ -176,6 +176,8 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 GuiGamelistOptions::~GuiGamelistOptions()
 {
+	LOG(LogInfo) << "DESTRUCTOR 1";
+	
 	// apply sort
 	if (!fromPlaceholder) {
 		FileData* root = mSystem->getRootFolder();
@@ -184,6 +186,7 @@ GuiGamelistOptions::~GuiGamelistOptions()
 		// notify that the root folder was sorted
 		getGamelist()->onFileChanged(root, FILE_SORTED);
 	}
+	LOG(LogInfo) << "DESTRUCTOR 2";
 	if (mFiltersChanged)
 	{
 		// only reload full view if we came from a placeholder
@@ -192,6 +195,7 @@ GuiGamelistOptions::~GuiGamelistOptions()
 		ViewController::get()->reloadGameListView(mSystem);
 	}
 
+	LOG(LogInfo) << "DESTRUCTOR 3";
 
 
 	//LOG(LogInfo) << "GuiGamelistOptions : Saving SortType = " + std::to_string(mListSort->getSelected()->id);
