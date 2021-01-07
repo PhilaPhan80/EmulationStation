@@ -213,7 +213,7 @@ GuiGamelistOptions::~GuiGamelistOptions()
 
 
 
-	save();
+	//save();
 
 
 	LOG(LogInfo) << "Save complete";
