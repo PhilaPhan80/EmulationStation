@@ -184,6 +184,9 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 GuiGamelistOptions::~GuiGamelistOptions()
 {
 	LOG(LogInfo) << "DESTRUCTOR 1";
+	LOG(LogInfo) << "mListSort->getSelected().id: " + std::to_string(mListSort->getSelected().id);
+	LOG(LogInfo) << "*mListSort->getSelected().id: " + std::to_string(*mListSort->getSelected().id);
+	LOG(LogInfo) << "DESTRUCTOR 1";
 	
 	// apply sort
 	if (!fromPlaceholder) {
