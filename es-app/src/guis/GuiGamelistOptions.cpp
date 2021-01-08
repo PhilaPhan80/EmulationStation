@@ -183,10 +183,10 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 GuiGamelistOptions::~GuiGamelistOptions()
 {
-	LOG(LogInfo) << "DESTRUCTOR 1";
+	LOG(LogInfo) << "DESTRUCTOR 1a";
 	LOG(LogInfo) << "mListSort->getSelected()->id: " + std::to_string(mListSort->getSelected()->id);
 	//LOG(LogInfo) << "*mListSort->getSelected()->id: " + std::to_string(*mListSort->getSelected()->id);
-	LOG(LogInfo) << "DESTRUCTOR 1";
+	LOG(LogInfo) << "DESTRUCTOR 1b";
 	
 	// apply sort
 	if (!fromPlaceholder) {
@@ -223,16 +223,18 @@ GuiGamelistOptions::~GuiGamelistOptions()
 
 
 
-	//save();
+	save();
 
 
-	LOG(LogInfo) << "Save complete";
+	LOG(LogInfo) << "Save complete with SortType = " + std::to_string(Settings::getInstance()->getInt("SortType"));
 
 
 }
 
 void GuiGamelistOptions::save()
 {
+	LOG(LogInfo) << "BEGIN save()";
+	
 	LOG(LogInfo) << "mSaveFuncs.size(): " + std::to_string(mSaveFuncs.size());
 	if(!mSaveFuncs.size())
 	{
