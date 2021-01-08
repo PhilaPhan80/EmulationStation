@@ -68,73 +68,15 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 		// sort list by
 		mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
-		//auto mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
-		
-
-
 		int selectedSortType = Settings::getInstance()->getInt("SortType");
 		for(unsigned int i = 0; i < FileSorts::SortTypes.size(); i++)
 		{
 			const FileData::SortType& sort = FileSorts::SortTypes.at(i);
-			
-			
-			
-			
-			//need to load the value from settings here instead of simply i == 0
-
-
-			
-			//THIS LOADS ALL OF THE SORT TYPES FROM THE ARRAY INTO A LIST AND SETS THE FIRST ONE (0) AS SELECTED SINCE IT HAS NO REAL "LOAD" FUNCTION
-			//mListSort->add(sort.description, &sort, i == 0); // TODO - actually make the sort type persistent
-			mListSort->add(std::to_string(sort.id) + ": " + sort.description + " :: " + std::to_string(sort.id == selectedSortType), &sort, sort.id == selectedSortType); // TODO - actually make the sort type persistent
-			
-						
-
-
-			//need to save this to Settings (es_settings.xml)  -->  id (int)
-			//is this even the proper place to perform a save??
-
-
-
-			//mListSort->save
-
-			//s->addSaveFunc([max_vram] { Settings::getInstance()->setInt("MaxVRAM", (int)Math::round(max_vram->getValue())); });
-
-
-
-
+			mListSort->add(sort.description, &sort, sort.id == selectedSortType);
 		}
 
-
-
-		//mListSort->setValue((int)(Settings::getInstance()->getInt("SortType")));
-
-
-	LOG(LogInfo) << "addWithLabel";
-
-
-		mMenu.addWithLabel("SORT GAMES BY -- " + std::to_string(FileSorts::SortTypes.size()) + ", " + std::to_string(selectedSortType) + ", " + std::to_string(mListSort->getSelected()->id), mListSort);
-
-
-	LOG(LogInfo) << "addSaveFunc";
-
-
-		//addSaveFunc([selectedSortType] { Settings::getInstance()->setInt("SortType", mListSort->getValue()); });
-
-		addSaveFunc([this] { 
-			LOG(LogInfo) << "addSaveFunc INNER 1";
-			Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id); 
-			LOG(LogInfo) << "addSaveFunc INNER 2";
-			});
-		
-	
-
-
-	Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id);
-	LOG(LogInfo) << "addSaveFunc complete with mListSort id " + std::to_string(mListSort->getSelected()->id) + " (selectedSortType = " + std::to_string(selectedSortType) + ", SortType = " + std::to_string(Settings::getInstance()->getInt("SortType")) + ")";
-
-
-
+		mMenu.addWithLabel("SORT GAMES BY", mListSort);
+		addSaveFunc([this] { Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id); });
 
 	}
 	// show filtered menu
@@ -183,11 +125,6 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 GuiGamelistOptions::~GuiGamelistOptions()
 {
-	LOG(LogInfo) << "DESTRUCTOR 1a";
-	LOG(LogInfo) << "mListSort->getSelected()->id: " + std::to_string(mListSort->getSelected()->id);
-	//LOG(LogInfo) << "*mListSort->getSelected()->id: " + std::to_string(*mListSort->getSelected()->id);
-	LOG(LogInfo) << "DESTRUCTOR 1b";
-	
 	// apply sort
 	if (!fromPlaceholder) {
 		FileData* root = mSystem->getRootFolder();
@@ -196,7 +133,6 @@ GuiGamelistOptions::~GuiGamelistOptions()
 		// notify that the root folder was sorted
 		getGamelist()->onFileChanged(root, FILE_SORTED);
 	}
-	LOG(LogInfo) << "DESTRUCTOR 2";
 	if (mFiltersChanged)
 	{
 		// only reload full view if we came from a placeholder
@@ -205,49 +141,19 @@ GuiGamelistOptions::~GuiGamelistOptions()
 		ViewController::get()->reloadGameListView(mSystem);
 	}
 
-	LOG(LogInfo) << "DESTRUCTOR 3";
-
-
-	//LOG(LogInfo) << "GuiGamelistOptions : Saving SortType = " + std::to_string(mListSort->getSelected()->id);
-
-
-
-	//Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id);
-
-
-	//LOG(LogInfo) << "SortType saved";
-
-
-
-	LOG(LogInfo) << "About to save SortType = " + std::to_string(Settings::getInstance()->getInt("SortType"));
-
-
-
 	save();
-
-
-	LOG(LogInfo) << "Save complete with SortType = " + std::to_string(Settings::getInstance()->getInt("SortType"));
-
 
 }
 
 void GuiGamelistOptions::save()
 {
-	LOG(LogInfo) << "BEGIN save()";
-	
-	LOG(LogInfo) << "mSaveFuncs.size(): " + std::to_string(mSaveFuncs.size());
 	if(!mSaveFuncs.size())
-	{
-	LOG(LogInfo) << "FAILED";
 		return;
-	}
 
 	for(auto it = mSaveFuncs.cbegin(); it != mSaveFuncs.cend(); it++)
 		(*it)();
 
 	Settings::getInstance()->saveFile();
-
-	LOG(LogInfo) << "SUCCEEDED";
 }
 
 void GuiGamelistOptions::openGamelistFilter()

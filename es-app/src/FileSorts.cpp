@@ -5,7 +5,6 @@
 namespace FileSorts
 {
 
-
 	const FileData::SortType typesArr[] = {
 		FileData::SortType(NAME_ASC, &compareName, true, "filename, ascending"),
 		FileData::SortType(NAME_DESC, &compareName, false, "filename, descending"),
@@ -41,43 +40,6 @@ namespace FileSorts
 		FileData::SortType(SYSTEM_DESC, &compareSystem, false, "system, descending")
 	};
 
-/*
-	const FileData::SortType typesArr[] = {
-		FileData::SortType(&compareName, true, "filename, ascending"),
-		FileData::SortType(&compareName, false, "filename, descending"),
-
-		FileData::SortType(&compareNameIgnoreArticles, true, "filename (ignore articles), ascending"),
-		FileData::SortType(&compareNameIgnoreArticles, false, "filename (ignore articles), descending"),
-
-		FileData::SortType(&compareRating, true, "rating, ascending"),
-		FileData::SortType(&compareRating, false, "rating, descending"),
-
-		FileData::SortType(&compareTimesPlayed, true, "times played, ascending"),
-		FileData::SortType(&compareTimesPlayed, false, "times played, descending"),
-
-		FileData::SortType(&compareLastPlayed, true, "last played, ascending"),
-		FileData::SortType(&compareLastPlayed, false, "last played, descending"),
-
-		FileData::SortType(&compareNumPlayers, true, "number players, ascending"),
-		FileData::SortType(&compareNumPlayers, false, "number players, descending"),
-
-		FileData::SortType(&compareReleaseDate, true, "release date, ascending"),
-		FileData::SortType(&compareReleaseDate, false, "release date, descending"),
-
-		FileData::SortType(&compareGenre, true, "genre, ascending"),
-		FileData::SortType(&compareGenre, false, "genre, descending"),
-
-		FileData::SortType(&compareDeveloper, true, "developer, ascending"),
-		FileData::SortType(&compareDeveloper, false, "developer, descending"),
-
-		FileData::SortType(&comparePublisher, true, "publisher, ascending"),
-		FileData::SortType(&comparePublisher, false, "publisher, descending"),
-
-		FileData::SortType(&compareSystem, true, "system, ascending"),
-		FileData::SortType(&compareSystem, false, "system, descending")
-	};
-*/
-
 	const std::vector<FileData::SortType> SortTypes(typesArr, typesArr + sizeof(typesArr)/sizeof(typesArr[0]));
 
 	//returns if file1 should come before file2
@@ -108,7 +70,7 @@ namespace FileSorts
 			name2 = Utils::String::toUpper(file2->metadata.get("name"));
 		}
 
-		//filter out any common leading English articles -- this can probably be optimized into a loop and external lookup of some kind
+		//filter out any common leading English articles -- this can probably be optimized into a loop and paired with an external lookup of some kind
 		if (Utils::String::startsWith(name1, "A ")) {
 			name1 = Utils::String::replace(name1, "A ", "");
 		}
@@ -128,15 +90,6 @@ namespace FileSorts
 		else if (Utils::String::startsWith(name2, "THE ")) {
 			name2 = Utils::String::replace(name2, "THE ", "");
 		}
-
-
-		//name1 = Utils::String::replace(name1, "THE ", "");
-		//name1 = Utils::String::replace(name1, "A ", "");
-		//name2 = Utils::String::replace(name2, "THE ", "");
-		//name2 = Utils::String::replace(name2, "A ", "");
-
-
-
 
 		return name1.compare(name2) < 0;
 	}
