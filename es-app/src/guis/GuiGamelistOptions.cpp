@@ -128,7 +128,7 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 			});
 		
 	
-	LOG(LogInfo) << "addSaveFunc complete";
+	LOG(LogInfo) << "addSaveFunc complete with mListSort id " + std::to_string(mListSort->getSelected()->id) + " (selectedSortType = " + std::to_string(selectedSortType) + ")";
 
 
 	}
