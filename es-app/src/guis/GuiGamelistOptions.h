@@ -41,7 +41,7 @@ private:
 	bool fromPlaceholder;
 	bool mFiltersChanged;
 
-	std::vector< std::function<void()> > mSaveFuncs;
+	//std::vector< std::function<void()> > mSaveFuncs;
 };
 
 #endif // ES_APP_GUIS_GUI_GAME_LIST_OPTIONS_H
