@@ -131,7 +131,7 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 
 
 	Settings::getInstance()->setInt("SortType", mListSort->getSelected()->id);
-	LOG(LogInfo) << "addSaveFunc complete with mListSort id " + std::to_string(mListSort->getSelected()->id) + " (selectedSortType = " + std::to_string(selectedSortType) + ", SortType = " + std::to_string(Settings::getInstance()->getInt("SortType", mListSort->getSelected()->id)) + ")";
+	LOG(LogInfo) << "addSaveFunc complete with mListSort id " + std::to_string(mListSort->getSelected()->id) + " (selectedSortType = " + std::to_string(selectedSortType) + ", SortType = " + std::to_string(Settings::getInstance()->getInt("SortType")) + ")";
 
 
 
