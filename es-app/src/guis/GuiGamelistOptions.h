@@ -41,7 +41,6 @@ private:
 	bool fromPlaceholder;
 	bool mFiltersChanged;
 
-protected:
 	std::vector< std::function<void()> > mSaveFuncs;
 };
 
