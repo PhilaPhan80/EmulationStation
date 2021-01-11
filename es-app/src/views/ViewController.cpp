@@ -451,6 +451,18 @@ void ViewController::preload()
 
 		(*it)->getIndex()->resetFilters();
 		getGameListView(*it);
+
+
+
+
+
+		root->sort(*mListSort->getSelected()); // will also recursively sort children
+
+// notify that the root folder was sorted
+		getGamelist()->onFileChanged(root, FILE_SORTED);
+
+
+
 	}
 }
 
