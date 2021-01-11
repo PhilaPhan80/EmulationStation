@@ -6,6 +6,8 @@
 #include "CollectionSystemManager.h"
 #include "Settings.h"
 #include "SystemData.h"
+#include "FileSorts.h"
+#include "FileData.h"
 
 BasicGameListView::BasicGameListView(Window* window, FileData* root)
 	: ISimpleGameListView(window, root), mList(window)
@@ -54,6 +56,43 @@ void BasicGameListView::populateList(const std::vector<FileData*>& files)
 	{
 		addPlaceholder();
 	}
+
+
+
+
+
+
+
+
+
+
+
+		//this may or may not work - if it doesn't, try placing it above the loop to try and "pre-sort" the list
+
+		const FileData::SortType& sort = FileSorts::SortTypes.at(Settings::getInstance()->getInt("SortType"));
+
+		FileData* root = mRoot->getSystem()->getRootFolder();
+
+		root->sort(sort);
+
+
+		//root->sort(*mListSort->getSelected()); // will also recursively sort children
+
+		// notify that the root folder was sorted
+		//mList->onFileChanged(root, FILE_SORTED);
+		//getGamelist()->onFileChanged(root, FILE_SORTED);
+		//mGameList->onFileChanged(root, FILE_SORTED);
+
+
+
+onFileChanged(root, FILE_SORTED);
+
+
+
+
+
+
+
 }
 
 FileData* BasicGameListView::getCursor()
