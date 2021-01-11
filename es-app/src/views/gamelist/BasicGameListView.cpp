@@ -62,6 +62,7 @@ void BasicGameListView::populateList(const std::vector<FileData*>& files)
 
 
 
+		LOG(LogError) << "POPULATING LIST";
 
 
 
@@ -71,9 +72,9 @@ void BasicGameListView::populateList(const std::vector<FileData*>& files)
 
 		const FileData::SortType& sort = FileSorts::SortTypes.at(Settings::getInstance()->getInt("SortType"));
 
-		FileData* root = mRoot->getSystem()->getRootFolder();
+		//FileData* root = mRoot->getSystem()->getRootFolder();
 
-		root->sort(sort);
+		//root->sort(sort);
 
 
 		//root->sort(*mListSort->getSelected()); // will also recursively sort children
@@ -85,7 +86,12 @@ void BasicGameListView::populateList(const std::vector<FileData*>& files)
 
 
 
-onFileChanged(root, FILE_SORTED);
+//onFileChanged(root, FILE_SORTED);
+
+
+
+
+		LOG(LogError) << "POPULATING COMPLETE";
 
 
 
