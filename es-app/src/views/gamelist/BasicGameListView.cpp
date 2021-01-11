@@ -17,24 +17,9 @@ BasicGameListView::BasicGameListView(Window* window, FileData* root)
 	mList.setDefaultZIndex(20);
 	addChild(&mList);
 
-
-
-
-LOG(LogError) << "SORTING WITH SortType = " + std::to_string(Settings::getInstance()->getInt("SortType"));
-
-
-		const FileData::SortType& sort = FileSorts::SortTypes.at(Settings::getInstance()->getInt("SortType"));
-
-		//FileData* root = mRoot->getSystem()->getRootFolder();
-
-		root->sort(sort);
-
-
-LOG(LogError) << "SORT COMPLETE";
-
-
-
-
+	//Apply previously saved SortType setting to all game lists on startup
+	const FileData::SortType& sort = FileSorts::SortTypes.at(Settings::getInstance()->getInt("SortType"));
+	root->sort(sort);
 
 	populateList(root->getChildrenListToDisplay());
 }
@@ -75,60 +60,6 @@ void BasicGameListView::populateList(const std::vector<FileData*>& files)
 	{
 		addPlaceholder();
 	}
-
-
-
-
-
-
-		//LOG(LogError) << "POPULATING LIST";
-
-
-
-
-
-		//this may or may not work - if it doesn't, try placing it above the loop to try and "pre-sort" the list
-
-		/*
-		const FileData::SortType& sort = FileSorts::SortTypes.at(Settings::getInstance()->getInt("SortType"));
-
-		FileData* root = mRoot->getSystem()->getRootFolder();
-
-
-
-
-LOG(LogError) << "1";
-
-
-
-		root->sort(sort);
-*/
-
-		//root->sort(*mListSort->getSelected()); // will also recursively sort children
-
-		// notify that the root folder was sorted
-		//mList->onFileChanged(root, FILE_SORTED);
-		//getGamelist()->onFileChanged(root, FILE_SORTED);
-		//mGameList->onFileChanged(root, FILE_SORTED);
-
-
-/*
-LOG(LogError) << "1";
-
-
-
-onFileChanged(root, FILE_SORTED);
-
-
-
-
-		LOG(LogError) << "POPULATING COMPLETE";
-*/
-
-
-
-
-
 
 }
 
