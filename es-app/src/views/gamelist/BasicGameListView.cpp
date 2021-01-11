@@ -74,7 +74,14 @@ void BasicGameListView::populateList(const std::vector<FileData*>& files)
 
 		FileData* root = mRoot->getSystem()->getRootFolder();
 
-		//root->sort(sort);
+
+
+
+LOG(LogError) << "1";
+
+
+
+		root->sort(sort);
 
 
 		//root->sort(*mListSort->getSelected()); // will also recursively sort children
