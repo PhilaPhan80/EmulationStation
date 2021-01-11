@@ -72,7 +72,7 @@ void BasicGameListView::populateList(const std::vector<FileData*>& files)
 
 		const FileData::SortType& sort = FileSorts::SortTypes.at(Settings::getInstance()->getInt("SortType"));
 
-		//FileData* root = mRoot->getSystem()->getRootFolder();
+		FileData* root = mRoot->getSystem()->getRootFolder();
 
 		//root->sort(sort);
 
