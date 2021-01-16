@@ -136,25 +136,54 @@ GuiGamelistOptions::~GuiGamelistOptions()
 		
 		
 
+
+
+		LOG(LogInfo) << "LOOP BEGIN";
+
+
+
 		//Loop through all systems and apply new sort selection
 		for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++){
 			
+
+
+			LOG(LogInfo) << "SYSTEM: " + (*it)->getName();
+
+
+
 			//Skip "retropie" folder since it's not a game system
 			if ((*it)->getName() != "retropie")
 			{
 				
+
+				LOG(LogInfo) << "1";
+
+
 				FileData* root = (*it)->getRootFolder();
+
+
+				LOG(LogInfo) << "2";
+
 
 				//FileData* root = mSystem->getRootFolder();
 				root->sort(*mListSort->getSelected()); // will also recursively sort children
 
+
+				LOG(LogInfo) << "3";
+
+
 				// notify that the root folder was sorted
 				getGamelist()->onFileChanged(root, FILE_SORTED);
 				
+
+				LOG(LogInfo) << "4";
+
 			}
 
 		}
 
+
+		LOG(LogInfo) << "LOOP END";
 
 
 
