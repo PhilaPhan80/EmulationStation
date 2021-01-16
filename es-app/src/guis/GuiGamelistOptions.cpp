@@ -127,11 +127,45 @@ GuiGamelistOptions::~GuiGamelistOptions()
 {
 	// apply sort
 	if (!fromPlaceholder) {
-		FileData* root = mSystem->getRootFolder();
-		root->sort(*mListSort->getSelected()); // will also recursively sort children
+		
+		
+		
+
+		//somehow get a list of all loaded systems here and loop through them
+		
+		
+		
+
+		//Loop through all systems and apply new sort selection
+		for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++){
+			
+			//Skip "retropie" folder since it's not a game system
+			if ((*it)->getName() != "retropie")
+			{
+				
+				FileData* root = (*it)->getRootFolder();
+
+				//FileData* root = mSystem->getRootFolder();
+				root->sort(*mListSort->getSelected()); // will also recursively sort children
+
+				// notify that the root folder was sorted
+				getGamelist()->onFileChanged(root, FILE_SORTED);
+				
+			}
+
+		}
+
+
+
+
+		
+		
+		
+		//FileData* root = mSystem->getRootFolder();
+		//root->sort(*mListSort->getSelected()); // will also recursively sort children
 
 		// notify that the root folder was sorted
-		getGamelist()->onFileChanged(root, FILE_SORTED);
+		//getGamelist()->onFileChanged(root, FILE_SORTED);
 	}
 	if (mFiltersChanged)
 	{
