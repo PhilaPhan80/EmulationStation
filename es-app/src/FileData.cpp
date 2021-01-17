@@ -293,7 +293,7 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 
 
 
-		LOG(LogInfo) << "CHECK: " + (*it)->getSystem()->getName() + " -- " + std::to_string((*it)->getChildren().size());
+		LOG(LogInfo) << "CHECK: " + (*it)->getSystem()->getName() + " -- " + (*it)->getName() + " -- " + std::to_string((*it)->getChildren().size());
 
 
 
