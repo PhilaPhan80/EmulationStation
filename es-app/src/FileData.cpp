@@ -252,7 +252,7 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 	
 	
 	auto fd = mChildren.cbegin();
-	LOG(LogInfo) << "SORT: " + (*fd)->getName();
+	//LOG(LogInfo) << "SORT: " + (*fd)->getName();
 
 
 
