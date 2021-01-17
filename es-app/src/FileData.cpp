@@ -290,11 +290,19 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 	
 	for(auto it = mChildren.cbegin(); it != mChildren.cend(); it++)
 	{
+
+
+
+		LOG(LogInfo) << "CHECK: " + (*it)->getSystem()->getName() + " -- " + std::to_string((*it)->getChildren().size());
+
+
+
+
 		if((*it)->getChildren().size() > 0) {
 
 
 
-			LOG(LogInfo) << "SORT: " + (*it)->getSystem()->getName();
+			LOG(LogInfo) << "SORT: " + (*it)->getSystem()->getName() + " -- " + (*it)->getName();
 
 
 
