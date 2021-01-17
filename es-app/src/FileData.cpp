@@ -261,7 +261,7 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 	LOG(LogInfo) << "SORTING";
 
 
-	if (mChildren) {
+	if (mChildren != NULL) {
 
 		auto fd = mChildren.cbegin();
 		if((*fd)->getChildren().size() > 0) {
