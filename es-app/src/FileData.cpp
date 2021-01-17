@@ -252,8 +252,12 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 	
 	
 	auto fd = mChildren.cbegin();
-	//LOG(LogInfo) << "SORT: " + (*fd)->getName();
-
+	if((*fd)->getChildren().size() > 0) {
+		LOG(LogInfo) << "SORT: " + (*fd)->getName();
+	}
+	else {
+		LOG(LogInfo) << "SORT: (empty)";
+	}
 
 
 
