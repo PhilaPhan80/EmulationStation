@@ -264,13 +264,13 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 	if (!mChildren.empty()) {
 
 		auto fd = mChildren.cbegin();
-		if((*fd)->getChildren().size() > 0) {
+		//if((*fd)->getChildren().size() > 0) {
 			LOG(LogInfo) << "SORT: " + (*fd)->getName();
 			//LOG(LogInfo) << "SORT: (NAME)";
-		}
-		else {
-			LOG(LogInfo) << "SORT: (empty)";
-		}
+		//}
+		//else {
+			//LOG(LogInfo) << "SORT: (empty)";
+		//}
 
 	}
 
