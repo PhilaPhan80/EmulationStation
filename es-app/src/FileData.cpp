@@ -311,6 +311,7 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 
 
 
+			LOG(LogInfo) << "DONE";
 
 
 
@@ -322,8 +323,30 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 
 	}
 
-	if(!ascending)
+	if(!ascending) {
+
+
+
+		LOG(LogInfo) << "*** REVERSING ***";
+
+
+
+		
 		std::reverse(mChildren.begin(), mChildren.end());
+
+
+
+
+
+
+
+
+	}
+
+
+
+
+
 }
 
 void FileData::sort(const SortType& type)
