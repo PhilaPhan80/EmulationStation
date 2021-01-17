@@ -250,6 +250,14 @@ void FileData::removeChild(FileData* file)
 void FileData::sort(ComparisonFunction& comparator, bool ascending)
 {
 	
+
+
+	std::stable_sort(mChildren.begin(), mChildren.end(), comparator);
+
+
+
+
+
 	
 	auto fd = mChildren.cbegin();
 	if((*fd)->getChildren().size() > 0) {
@@ -264,8 +272,7 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 
 
 	
-	std::stable_sort(mChildren.begin(), mChildren.end(), comparator);
-
+	
 	for(auto it = mChildren.cbegin(); it != mChildren.cend(); it++)
 	{
 		if((*it)->getChildren().size() > 0)
