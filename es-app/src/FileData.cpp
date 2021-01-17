@@ -257,11 +257,18 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 
 
 
-
+/*
 	LOG(LogInfo) << "SORTING";
 
 
 	if (!mChildren.empty()) {
+
+
+
+		//don't forget to exclude retropie here
+
+
+
 
 		auto fd = mChildren.cbegin();
 		//if((*fd)->getChildren().size() > 0) {
@@ -275,7 +282,7 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 	}
 
 	LOG(LogInfo) << "SORTED";
-
+*/
 
 
 
@@ -283,8 +290,28 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 	
 	for(auto it = mChildren.cbegin(); it != mChildren.cend(); it++)
 	{
-		if((*it)->getChildren().size() > 0)
+		if((*it)->getChildren().size() > 0) {
+
+
+
+			LOG(LogInfo) << "SORT: " + (*it)->getSystem()->getName();
+
+
+
+		
 			(*it)->sort(comparator, ascending);
+
+
+
+
+
+
+		}
+
+
+
+
+
 	}
 
 	if(!ascending)
