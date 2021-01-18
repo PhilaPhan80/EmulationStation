@@ -344,7 +344,7 @@ std::shared_ptr<IGameListView> ViewController::getGameListView(SystemData* syste
 
 
 
-	LOG(LogInfo) << "VIEW TYPE: " + view->getName();
+	LOG(LogInfo) << "VIEW TYPE: " + std::to_string(view->getName());
 
 
 
