@@ -445,6 +445,14 @@ void ViewController::render(const Transform4x4f& parentTrans)
 
 void ViewController::preload()
 {
+	
+	
+	
+	LOG(LogInfo) << "PRELOADING...";
+
+
+	
+	
 	uint32_t i = 0;
 	for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++)
 	{
@@ -459,9 +467,25 @@ void ViewController::preload()
 		}
 
 		(*it)->getIndex()->resetFilters();
+
+
+
+		LOG(LogInfo) << "GETTING GameListView...";
+
+
+
+
 		getGameListView(*it);
 
 	}
+
+
+
+	LOG(LogInfo) << "PRELOADED";
+
+
+
+
 }
 
 void ViewController::reloadGameListView(IGameListView* view, bool reloadTheme)
