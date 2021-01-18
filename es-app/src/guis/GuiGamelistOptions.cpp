@@ -160,7 +160,7 @@ GuiGamelistOptions::~GuiGamelistOptions()
 
 
 
-				root->sort(sortType); // will also recursively sort children
+				root->sort(sortType.comparisonFunction); // will also recursively sort children
 
 				// notify that the root folder was sorted
 				getGamelist()->onFileChanged(root, FILE_SORTED);
