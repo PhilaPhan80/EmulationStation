@@ -258,10 +258,6 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 
 
 
-comparator
-
-
-
 
 	std::stable_sort(mChildren.begin(), mChildren.end(), comparator);
 	
