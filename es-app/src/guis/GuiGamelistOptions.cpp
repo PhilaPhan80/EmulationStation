@@ -136,7 +136,7 @@ GuiGamelistOptions::~GuiGamelistOptions()
 			
 			//Skip "retropie" folder if the SortType is either NAME_IGNORE_ARTICLES_ASC or NAME_IGNORE_ARTICLES_DESC
 			//(since those settings don't really apply to non-game systems)
-			if (!(((*it)->getName() == "retropie") && (sortType == FileSorts::SortType::NAME_IGNORE_ARTICLES_ASC || sortType.id == FileSorts::SortType::NAME_IGNORE_ARTICLES_DESC)))
+			if (!(((*it)->getName() == "retropie") && (sortType.id == FileSorts::SortType::NAME_IGNORE_ARTICLES_ASC || sortType.id == FileSorts::SortType::NAME_IGNORE_ARTICLES_DESC)))
 			{
 				FileData* root = (*it)->getRootFolder();
 				root->sort(*mListSort->getSelected()); // will also recursively sort children
