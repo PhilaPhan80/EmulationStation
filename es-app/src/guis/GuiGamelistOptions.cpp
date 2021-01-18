@@ -153,6 +153,13 @@ GuiGamelistOptions::~GuiGamelistOptions()
 
 
 				FileData* root = (*it)->getRootFolder();
+
+
+
+				LOG(LogInfo) << "SORT sortType: " + std::to_string(sortType.id);
+
+
+
 				root->sort(sortType); // will also recursively sort children
 
 				// notify that the root folder was sorted
