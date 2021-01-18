@@ -341,6 +341,14 @@ std::shared_ptr<IGameListView> ViewController::getGameListView(SystemData* syste
 	int id = (int)(std::find(sysVec.cbegin(), sysVec.cend(), system) - sysVec.cbegin());
 	view->setPosition(id * (float)Renderer::getScreenWidth(), (float)Renderer::getScreenHeight() * 2);
 
+
+
+
+	LOG(LogInfo) << "VIEW TYPE: " + view->getName();
+
+
+
+
 	addChild(view.get());
 
 	mGameListViews[system] = view;
