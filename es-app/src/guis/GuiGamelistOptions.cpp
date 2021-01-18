@@ -133,7 +133,7 @@ GuiGamelistOptions::~GuiGamelistOptions()
 
 
 
-		LOG(LogInfo) << "sortType: " + std::string(*mListSort->getSelected()->id);
+		LOG(LogInfo) << "sortType: " + std::string(mListSort->getSelected()->id);
 
 
 
@@ -156,7 +156,7 @@ GuiGamelistOptions::~GuiGamelistOptions()
 
 
 
-				LOG(LogInfo) << "SORT sortType: " + std::to_string(*mListSort->getSelected()->id);
+				LOG(LogInfo) << "SORT sortType: " + std::to_string(mListSort->getSelected()->id);
 
 
 
