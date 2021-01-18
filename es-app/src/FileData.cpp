@@ -254,7 +254,7 @@ void FileData::sort(ComparisonFunction& comparator, bool ascending)
 
 
 	auto fd = mChildren.begin();
-	LOG(LogInfo) << "SORT: " + (*fd)->getSystem()->getName() + " -- " + (*fd)->getPath();
+	LOG(LogInfo) << "SORT: " + (*fd)->getSystem()->getName() + " -- " + (*fd)->getSystem()->getStartPath();
 
 
 
