@@ -129,11 +129,11 @@ GuiGamelistOptions::~GuiGamelistOptions()
 	if (!fromPlaceholder) {
 
 		//Get the sort selection that was just applied via the GUI
-		const FileData::SortType sortType = *mListSort->getSelected();
+		//const FileData::SortType sortType = *mListSort->getSelected();
 
 
 
-		LOG(LogInfo) << "sortType: " + std::to_string(sortType.id);
+		LOG(LogInfo) << "sortType: " + std::to_string(*mListSort->getSelected()->id);
 
 
 
@@ -142,7 +142,7 @@ GuiGamelistOptions::~GuiGamelistOptions()
 			
 			//Skip "retropie" folder if the SortType is either NAME_IGNORE_ARTICLES_ASC or NAME_IGNORE_ARTICLES_DESC
 			//(since those settings don't really apply to non-game systems)
-			if (!(((*it)->getName() == "retropie") && (sortType.id == FileSorts::SortType::NAME_IGNORE_ARTICLES_ASC || sortType.id == FileSorts::SortType::NAME_IGNORE_ARTICLES_DESC)))
+			if (!(((*it)->getName() == "retropie") && (*mListSort->getSelected()->id == FileSorts::SortType::NAME_IGNORE_ARTICLES_ASC || *mListSort->getSelected()->id == FileSorts::SortType::NAME_IGNORE_ARTICLES_DESC)))
 			{
 
 
@@ -156,11 +156,11 @@ GuiGamelistOptions::~GuiGamelistOptions()
 
 
 
-				LOG(LogInfo) << "SORT sortType: " + std::to_string(sortType.id);
+				LOG(LogInfo) << "SORT sortType: " + std::to_string(*mListSort->getSelected()->id);
 
 
 
-				root->sort(sortType); // will also recursively sort children
+				root->sort(*mListSort->getSelected()); // will also recursively sort children
 
 				// notify that the root folder was sorted
 				getGamelist()->onFileChanged(root, FILE_SORTED);
