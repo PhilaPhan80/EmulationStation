@@ -341,15 +341,6 @@ std::shared_ptr<IGameListView> ViewController::getGameListView(SystemData* syste
 	int id = (int)(std::find(sysVec.cbegin(), sysVec.cend(), system) - sysVec.cbegin());
 	view->setPosition(id * (float)Renderer::getScreenWidth(), (float)Renderer::getScreenHeight() * 2);
 
-
-
-
-
-	LOG(LogInfo) << "VIEW TYPE: " + std::string(view->getName());
-
-
-
-
 	addChild(view.get());
 
 	mGameListViews[system] = view;
@@ -446,13 +437,6 @@ void ViewController::render(const Transform4x4f& parentTrans)
 void ViewController::preload()
 {
 	
-	
-	
-	LOG(LogInfo) << "PRELOADING...";
-
-
-	
-	
 	uint32_t i = 0;
 	for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++)
 	{
@@ -467,24 +451,9 @@ void ViewController::preload()
 		}
 
 		(*it)->getIndex()->resetFilters();
-
-
-
-		LOG(LogInfo) << "GETTING GameListView...";
-
-
-
-
 		getGameListView(*it);
 
 	}
-
-
-
-	LOG(LogInfo) << "PRELOADED";
-
-
-
 
 }
 

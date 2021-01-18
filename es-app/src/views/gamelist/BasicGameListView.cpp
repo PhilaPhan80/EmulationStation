@@ -19,19 +19,7 @@ BasicGameListView::BasicGameListView(Window* window, FileData* root)
 
 	//Apply previously saved SortType setting to all game lists on startup
 	const FileData::SortType& sort = FileSorts::SortTypes.at(Settings::getInstance()->getInt("SortType"));
-
-
-
-	LOG(LogInfo) << "READY TO SORT WITH COMPARATOR: " + std::to_string(sort.id) + " -- " + sort.description;
-
-
-
 	root->sort(sort);
-
-
-	LOG(LogInfo) << "JUST FINISHED SORTING WITH COMPARATOR: " + std::to_string(sort.id) + " -- " + sort.description;
-
-
 
 	populateList(root->getChildrenListToDisplay());
 }

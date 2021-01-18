@@ -127,74 +127,26 @@ GuiGamelistOptions::~GuiGamelistOptions()
 {
 	// apply sort
 	if (!fromPlaceholder) {
-		
-		
-		
 
-		//somehow get a list of all loaded systems here and loop through them
-		
-		
-		
+		//Get the sort selection that was just applied via the GUI
+		const FileData::SortType sortType = *mListSort->getSelected();
 
-
-
-		LOG(LogInfo) << "LOOP BEGIN";
-
-
-
-		//Loop through all systems and apply new sort selection
+		//Loop through all systems and apply the new SortType selection
 		for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++){
 			
-
-
-			LOG(LogInfo) << "SYSTEM: " + (*it)->getName();
-
-
-
-			//Skip "retropie" folder since it's not a game system
-			if ((*it)->getName() != "retropie")
+			//Skip "retropie" folder if the SortType is either NAME_IGNORE_ARTICLES_ASC or NAME_IGNORE_ARTICLES_DESC
+			//(since those settings don't really apply to non-game systems)
+			if (!(((*it)->getName() == "retropie") && (sortType == FileSorts::SortType::NAME_IGNORE_ARTICLES_ASC || sortType.id == FileSorts::SortType::NAME_IGNORE_ARTICLES_DESC)))
 			{
-				
-
-				LOG(LogInfo) << "1";
-
-
 				FileData* root = (*it)->getRootFolder();
-
-
-				LOG(LogInfo) << "2";
-
-
-				//FileData* root = mSystem->getRootFolder();
 				root->sort(*mListSort->getSelected()); // will also recursively sort children
-
-
-				LOG(LogInfo) << "3";
-
 
 				// notify that the root folder was sorted
 				getGamelist()->onFileChanged(root, FILE_SORTED);
-				
-
-				LOG(LogInfo) << "4";
-
 			}
 
 		}
 
-
-		LOG(LogInfo) << "LOOP END";
-
-
-
-		
-		
-		
-		//FileData* root = mSystem->getRootFolder();
-		//root->sort(*mListSort->getSelected()); // will also recursively sort children
-
-		// notify that the root folder was sorted
-		//getGamelist()->onFileChanged(root, FILE_SORTED);
 	}
 	if (mFiltersChanged)
 	{

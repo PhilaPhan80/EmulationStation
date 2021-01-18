@@ -35,24 +35,8 @@ SystemData::SystemData(const std::string& name, const std::string& fullName, Sys
 		if(!Settings::getInstance()->getBool("IgnoreGamelist"))
 			parseGamelist(this);
 
-
-
-
-
-
-
-		LOG(LogInfo) << "SYSTEM DATA CONSTUCTOR SORT...";
-
-
-
-
 		//Apply previously saved SortType setting to all game lists on startup
 		const FileData::SortType& sort = FileSorts::SortTypes.at(Settings::getInstance()->getInt("SortType"));
-
-
-
-
-		//mRootFolder->sort(FileSorts::SortTypes.at(0));
 		mRootFolder->sort(sort);
 
 		indexAllGameFilters(mRootFolder);

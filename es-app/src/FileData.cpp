@@ -250,124 +250,21 @@ void FileData::removeChild(FileData* file)
 void FileData::sort(ComparisonFunction& comparator, bool ascending)
 {
 	
-
-
-
-	auto fd = mChildren.begin();
-	LOG(LogInfo) << "SORT: " + (*fd)->getSystem()->getName() + " -- " + (*fd)->getSystem()->getStartPath();
-
-
-
-
 	std::stable_sort(mChildren.begin(), mChildren.end(), comparator);
-
-
-
-
-/*
-	LOG(LogInfo) << "SORTING";
-
-
-	if (!mChildren.empty()) {
-
-
-
-		//don't forget to exclude retropie here
-
-
-
-
-		auto fd = mChildren.cbegin();
-		//if((*fd)->getChildren().size() > 0) {
-			LOG(LogInfo) << "SORT: " + (*fd)->getName();
-			//LOG(LogInfo) << "SORT: (NAME)";
-		//}
-		//else {
-			//LOG(LogInfo) << "SORT: (empty)";
-		//}
-
-	}
-
-	LOG(LogInfo) << "SORTED";
-*/
-
-
-
-	
 	
 	for(auto it = mChildren.cbegin(); it != mChildren.cend(); it++)
 	{
-
-
-
-		LOG(LogInfo) << "CHECK: " + (*it)->getSystem()->getName() + " -- " + (*it)->getName() + " -- " + std::to_string((*it)->getChildren().size());
-
-
-
-
-		if((*it)->getChildren().size() > 0) {
-
-
-
-			LOG(LogInfo) << "SORT: " + (*it)->getSystem()->getName() + " -- " + (*it)->getName();
-
-
-
-		
+		if((*it)->getChildren().size() > 0)
 			(*it)->sort(comparator, ascending);
-
-
-
-			LOG(LogInfo) << "DONE";
-
-
-
-		}
-
-
-
-
-
 	}
 
-	if(!ascending) {
-
-
-
-		LOG(LogInfo) << "*** REVERSING ***";
-
-
-
-		
+	if(!ascending)
 		std::reverse(mChildren.begin(), mChildren.end());
-
-
-
-
-
-
-
-
-	}
-
-
-
-
 
 }
 
 void FileData::sort(const SortType& type)
 {
-
-
-
-	LOG(LogInfo) << "SORTING WITH COMPARATOR: " + std::to_string(type.id) + " -- " + type.description;
-
-
-
-
-
-
 	sort(*type.comparisonFunction, type.ascending);
 }
 
