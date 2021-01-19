@@ -10,6 +10,7 @@
 #include "FileSorts.h"
 #include "GuiMetaDataEd.h"
 #include "SystemData.h"
+#include "FileData.h"
 
 GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : GuiComponent(window),
 	mSystem(system), mMenu(window, "OPTIONS"), fromPlaceholder(false), mFiltersChanged(false)
@@ -128,8 +129,26 @@ GuiGamelistOptions::~GuiGamelistOptions()
 	// apply sort
 	if (!fromPlaceholder) {
 
+
+
+/*
+ORIGINAL CODE
+
+		FileData* root = mSystem->getRootFolder();
+		root->sort(*mListSort->getSelected()); // will also recursively sort children
+
+		// notify that the root folder was sorted
+		getGamelist()->onFileChanged(root, FILE_SORTED);
+*/
+		
+
+
+
+
 		//Get the sort selection that was just applied via the GUI
-		const FileData::SortType sortType = *mListSort->getSelected();
+		const FileData::SortType& sortType = FileSorts::SortTypes.at(*mListSort->getSelected()->id);
+
+
 
 
 
@@ -160,7 +179,9 @@ GuiGamelistOptions::~GuiGamelistOptions()
 
 
 
-				root->sort(sortType.comparisonFunction); // will also recursively sort children
+
+				//root->sort(*mListSort->getSelected()); // will also recursively sort children
+				root->sort(sortType); // will also recursively sort children
 
 				// notify that the root folder was sorted
 				getGamelist()->onFileChanged(root, FILE_SORTED);
