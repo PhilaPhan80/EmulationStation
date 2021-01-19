@@ -129,90 +129,17 @@ GuiGamelistOptions::~GuiGamelistOptions()
 	// apply sort
 	if (!fromPlaceholder) {
 
-
-
-/*
-ORIGINAL CODE
-
-		FileData* root = mSystem->getRootFolder();
-		root->sort(*mListSort->getSelected()); // will also recursively sort children
-
-		// notify that the root folder was sorted
-		getGamelist()->onFileChanged(root, FILE_SORTED);
-*/
-		
-
-
-
-
 		//Get the sort selection that was just applied via the GUI
 		const FileData::SortType& sortType = FileSorts::SortTypes.at(mListSort->getSelected()->id);
-
-
-
-
-
-		LOG(LogInfo) << "sortType: " + std::to_string(sortType.id);
-
-
 
 		//Loop through all systems and apply the new SortType selection
 		for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++){
 			
-			//Skip "retropie" folder if the SortType is either NAME_IGNORE_ARTICLES_ASC or NAME_IGNORE_ARTICLES_DESC
-			//(since those settings don't really apply to non-game systems)
-			if (!(((*it)->getName() == "retropie") && (sortType.id == FileSorts::SortType::NAME_IGNORE_ARTICLES_ASC || sortType.id == FileSorts::SortType::NAME_IGNORE_ARTICLES_DESC)))
-			{
+			FileData* root = (*it)->getRootFolder();
+			root->sort(sortType); // will also recursively sort children
 
-
-
-				LOG(LogInfo) << "system: " + (*it)->getName();
-
-
-
-				FileData* root = mSystem->getRootFolder();
-				LOG(LogInfo) << "root folder 1: " + root->getFullPath();
-
-
-
-
-				//FileData* root = (*it)->getRootFolder();
-				root = (*it)->getRootFolder();
-				LOG(LogInfo) << "root folder 2: " + root->getFullPath();
-
-
-
-
-
-				LOG(LogInfo) << "SORT sortType: " + std::to_string(sortType.id);
-
-
-
-
-				//root->sort(*mListSort->getSelected()); // will also recursively sort children
-				root->sort(sortType); // will also recursively sort children
-
-
-
-
-
-
-				LOG(LogInfo) << "gameList: " + std::string(getGamelist()->getName());
-
-
-
-
-				// notify that the root folder was sorted
-				//getGamelist()->onFileChanged(root, FILE_SORTED);
-				// notify that the root folder was sorted (for each system)
-				ViewController::get()->getGameListView((*it)).get()->onFileChanged(root, FILE_SORTED);
-
-
-
-
-
-
-			}
+			// notify that the root folder was sorted (for each system)
+			ViewController::get()->getGameListView((*it)).get()->onFileChanged(root, FILE_SORTED);
 
 		}
 

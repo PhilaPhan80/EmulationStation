@@ -17,15 +17,7 @@ BasicGameListView::BasicGameListView(Window* window, FileData* root)
 	mList.setDefaultZIndex(20);
 	addChild(&mList);
 
-
-
-
-	LOG(LogInfo) << "BASIC GAME LIST VIEW SORT...";
-
-
-
-
-	//Apply previously saved SortType setting to all game lists on startup
+	//Apply previously saved SortType to all game lists on startup
 	const FileData::SortType& sort = FileSorts::SortTypes.at(Settings::getInstance()->getInt("SortType"));
 	root->sort(sort);
 
