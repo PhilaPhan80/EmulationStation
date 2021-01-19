@@ -195,6 +195,8 @@ ORIGINAL CODE
 
 
 
+
+
 				LOG(LogInfo) << "gameList: " + std::string(getGamelist()->getName());
 
 
