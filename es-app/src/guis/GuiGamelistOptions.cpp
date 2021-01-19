@@ -201,11 +201,9 @@ ORIGINAL CODE
 
 
 				// notify that the root folder was sorted
-				getGamelist()->onFileChanged(root, FILE_SORTED);
-
-
-
-
+				//getGamelist()->onFileChanged(root, FILE_SORTED);
+				// notify that the root folder was sorted (for each system)
+				ViewController::get()->getGameListView((*it)).get()->onFileChanged(root, FILE_SORTED);
 
 
 
