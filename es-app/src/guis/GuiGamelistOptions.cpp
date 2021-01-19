@@ -192,8 +192,26 @@ ORIGINAL CODE
 				//root->sort(*mListSort->getSelected()); // will also recursively sort children
 				root->sort(sortType); // will also recursively sort children
 
+
+
+
+				LOG(LogInfo) << "gameList: " + std::string(getGamelist()->getName());
+
+
+
+
 				// notify that the root folder was sorted
 				getGamelist()->onFileChanged(root, FILE_SORTED);
+
+
+
+
+
+
+
+
+
+
 			}
 
 		}
