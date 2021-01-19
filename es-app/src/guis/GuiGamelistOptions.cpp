@@ -146,7 +146,7 @@ ORIGINAL CODE
 
 
 		//Get the sort selection that was just applied via the GUI
-		const FileData::SortType& sortType = FileSorts::SortTypes.at(*mListSort->getSelected()->id);
+		const FileData::SortType& sortType = FileSorts::SortTypes.at(mListSort->getSelected()->id);
 
 
 
