@@ -170,8 +170,17 @@ ORIGINAL CODE
 
 
 
+				FileData* root = mSystem->getRootFolder();
+				LOG(LogInfo) << "root folder 1: " + root->getFullPath();
 
-				FileData* root = (*it)->getRootFolder();
+
+
+
+				//FileData* root = (*it)->getRootFolder();
+				root = (*it)->getRootFolder();
+				LOG(LogInfo) << "root folder 2: " + root->getFullPath();
+
+
 
 
 
