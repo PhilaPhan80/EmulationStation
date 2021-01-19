@@ -70,7 +70,8 @@ namespace FileSorts
 			name2 = Utils::String::toUpper(file2->metadata.get("name"));
 		}
 
-		//filter out any common leading English articles -- this can probably be optimized into a loop and paired with an external lookup of some kind
+		//Filter out any common leading English articles
+		//(This can probably be optimized via a loop and external lookup of some kind)
 		if (Utils::String::startsWith(name1, "A ")) {
 			name1 = Utils::String::replace(name1, "A ", "");
 		}
