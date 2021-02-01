@@ -31,7 +31,7 @@ private:
 
 	MenuComponent mMenu;
 	TextComponent mVersion;
-	
+
 	typedef OptionListComponent<const FileData::SortType*> SortList;
 	std::shared_ptr<SortList> mListSort;
 };
