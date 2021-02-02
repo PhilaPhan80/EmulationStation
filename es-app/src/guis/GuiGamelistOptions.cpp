@@ -67,14 +67,14 @@ GuiGamelistOptions::GuiGamelistOptions(Window* window, SystemData* system) : Gui
 		mMenu.addRow(row);
 
 		// sort list by
-		mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY... (TEMPORARY, THIS SYSTEM ONLY)", false);
+		mListSort = std::make_shared<SortList>(mWindow, "SORT GAMES BY (TEMPORARY)", false);
 		for(unsigned int i = 0; i < FileSorts::SortTypes.size(); i++)
 		{
 			const FileData::SortType& sort = FileSorts::SortTypes.at(i);
 			mListSort->add(sort.description, &sort, i == 0);
 		}
 
-		mMenu.addWithLabel("SORT GAMES BY... (TEMPORARY)", mListSort);
+		mMenu.addWithLabel("SORT GAMES BY (TEMPORARY)", mListSort);
 	}
 
 	// show filtered menu
