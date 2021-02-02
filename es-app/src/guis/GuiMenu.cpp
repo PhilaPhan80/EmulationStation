@@ -336,12 +336,12 @@ void GuiMenu::openUISettings()
 	});
 
 	// Sort games by SortType
-	auto sort_games_by = std::make_shared<SortList>(mWindow, "SORT GAMES BY", false);
+	auto sort_games_by = std::make_shared<SortList>(mWindow, "SORT GAMES BY... (DEFAULT FOR ALL SYSTEMS)", false);
 	for (unsigned int i = 0; i < FileSorts::SortTypes.size(); i++) {
 		const FileData::SortType& st = FileSorts::SortTypes.at(i);
 		sort_games_by->add(st.description, &st, st.id == Settings::getInstance()->getInt("SortType"));
 	}
-	s->addWithLabel("SORT GAMES BY", sort_games_by);
+	s->addWithLabel("SORT GAMES BY... (DEFAULT)", sort_games_by);
 	s->addSaveFunc([sort_games_by, window] {
 		bool needReload = false;
 		if (Settings::getInstance()->getInt("SortType") != sort_games_by->getSelected()->id)
